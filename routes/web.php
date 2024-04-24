@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TodoTaskController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [TodoTaskController::class, 'index']) -> name('home');
+Route::post('/', [TodoTaskController::class, 'tambah']);
+Route::delete('/hapus/{id}', [TodoTaskController::class, 'destroy']);
